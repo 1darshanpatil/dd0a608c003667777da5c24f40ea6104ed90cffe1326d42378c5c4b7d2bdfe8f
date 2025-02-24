@@ -18,7 +18,6 @@ Darshan P.
 Commit@1737993021
 """
 
-
 # Human:
 # Partition of N(say100) then you have to set BREAK_POINT=101
 
@@ -28,16 +27,21 @@ Commit@1737993021
 # len(ColVect) = BREAK_POINT
 # Therefore, BREAK_POINT = N+1 ( Where: N = Partition you are trying to find )
 
-N=666
+N=int(input("Enter the value of N for the partition(N): "))
 # SET THE VALUE OF PARTITION YOU WANT TO FIND
 BREAK_POINT = N+1
 def mult(r, c):
-    return sum(r[i]*c[i] for i in range(len(r)))
+    c.append(sum(r[i]*c[i] for i in range(len(r))))
 colvect = [1]
 rowvect = []
 n, p = 1, 1
 k = 1
 pent = lambda x: x * ( 3 * x - 1 ) // 2
+
+# Here, as per the Mathologer video, I wanted to try generating pentagonal numbers using 
+# N_natural and N_odd. However, I didn't want to spend time on that for some reason. 
+# Contributions and comments are welcome.
+
 while True:
     pos_neg = 0
     if n == pent(k*p):
@@ -52,9 +56,38 @@ while True:
             p += 1
     rowvect.insert(0, pos_neg)
     n += 1
-    colvect.append(mult(rowvect, colvect))
+    mult(rowvect, colvect)
     if n == BREAK_POINT:
         break
 #print("colVect", colvect)
 print(colvect[N])
+
+
+```
+# I'm so glad I finally tried this! It had been on my reminders list for the past 4-5 weeks, 
+# and I'm incredibly happy that I gave it a shot.
+# It however fails to compete with sympy.partitions
+>>> from sympy import *; partition(100)
+190569292
+
+
+[Ilya@m87 partalgo]$ python3 euler_gen.py 
+Enter the value of N for the partition(N): 100
+190569292
+[Ilya@m87 partalgo]$ python3 euler_gen.py 
+Enter the value of N for the partition(N): 6660
+176391179771416981710569585813452498508987474057399720269827317078498698483361307187738
+[Ilya@m87 partalgo]$ python3 euler_gen.py 
+Enter the value of N for the partition(N): 1000
+24061467864032622473692149727991
+[Ilya@m87 partalgo]$ cat euler_gen.py | pbcopy 
+[Ilya@m87 partalgo]$ python3 euler_gen.py 
+Enter the value of N for the partition(N): 9999
+35709901879704736738758549207052696680819022123397567612860179055188265961723158018938110612668644192313000
+[Ilya@m87 partalgo]$ python3 euler_gen.py 
+Enter the value of N for the partition(N): 9999
+35709901879704736738758549207052696680819022123397567612860179055188265961723158018938110612668644192313000
+[Ilya@m87 partalgo]$ 
+```
+
 
