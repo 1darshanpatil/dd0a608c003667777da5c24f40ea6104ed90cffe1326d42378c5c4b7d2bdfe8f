@@ -63,7 +63,7 @@ while True:
 print(colvect[N])
 
 
-```
+'''
 # I'm so glad I finally tried this! It had been on my reminders list for the past 4-5 weeks, 
 # and I'm incredibly happy that I gave it a shot.
 # It however fails to compete with sympy.partitions
@@ -88,6 +88,4 @@ Enter the value of N for the partition(N): 9999
 Enter the value of N for the partition(N): 9999
 35709901879704736738758549207052696680819022123397567612860179055188265961723158018938110612668644192313000
 [Ilya@m87 partalgo]$ 
-```
-
-
+'''
